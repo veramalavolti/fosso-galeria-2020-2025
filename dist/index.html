@@ -1,12 +1,452 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fosso Galeria · Monitoraggio acque 2020–2025 · A SUD</title><meta name="description" content="Esplora 7.220 misurazioni della qualità delle acque del Fosso Galeria, 208 parametri e due stazioni, dal 2020 al 2025."><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="style.css"><script defer src="vendor/chart.umd.min.js"></script><script type="module" src="app.js"></script></head>
-<body><a class="skip-link" href="#explore">Vai ai dati</a>
-<header class="topnav"><div class="nav-brand"><img src="logo_asud.png" alt="A SUD" class="nav-logo-img"><span class="nav-title">Monitoraggio qualità acque</span></div><div class="nav-right"><span class="nav-year">2020 – 2025</span><button class="info-btn" id="info">▤ Scheda informativa</button></div></header>
-<main><section class="hero"><div class="hero-left"><div class="hero-label">Dati ambientali · Fosso Galeria</div><h1 class="hero-title" id="heroTitle">% Ossigeno disciolto</h1><p class="hero-sub">Analisi interattiva della qualità dell'acqua superficiale · campionamenti 2020–2025</p><div class="unit-tag" id="unitBadge">Unità di misura: % di saturazione</div></div><div class="hero-right"><label class="hero-select-label" for="search">Cerca tra 208 parametri</label><input id="search" type="search" placeholder="Cerca parametro…" autocomplete="off"><label class="sr-only" for="substanceSelect">Parametro analizzato</label><select id="substanceSelect" class="hero-select"><option>% OSSIGENO DISCIOLTO</option></select><span id="searchStatus" class="search-status" aria-live="polite"></span></div></section>
-<section class="metrics-strip" aria-label="Riepilogo della selezione" aria-live="polite"><div class="metric-card"><div class="metric-label">Misurazioni</div><div class="metric-value" id="mCount">—</div><div class="metric-sub">nel periodo e nelle stazioni selezionate</div></div><div class="metric-card"><div class="metric-label">Valore medio</div><div class="metric-value" id="mMean">—</div><div class="metric-sub" id="mMeanUnit">—</div></div><div class="metric-card"><div class="metric-label">Picco massimo</div><div class="metric-value lime" id="mMax">—</div><div class="metric-sub" id="mMaxDate">—</div></div><div class="metric-card"><div class="metric-label">Sotto quantificazione</div><div class="metric-value" id="mBelow">—</div><div class="metric-sub" id="mBelowPct">risultati riportati con «&lt;»</div></div></section>
-<section class="content" id="explore"><div id="status" role="status">Caricamento dati ambientali…</div><div class="filters"><label>Periodo<select id="year"><option value="all">2020–2025 · tutti</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option></select></label><label>Valori &lt; LOQ<select id="method"><option value="half">Stima LOQ/2</option><option value="zero">Stima zero</option><option value="limit">Stima LOQ</option><option value="exclude">Solo quantificati</option></select></label><div class="filter-actions"><button class="text-button" id="reset">Ripristina filtri</button><button class="download-btn" id="download">↓ Scarica CSV</button></div></div>
-<div class="tabs-bar" role="tablist" aria-label="Vista dei dati"><button class="tab-btn active" id="tab-trend" role="tab" aria-selected="true" aria-controls="panel" data-view="trend">↗ Andamento</button><button class="tab-btn" id="tab-bar" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel" data-view="bar">▥ Confronto</button><button class="tab-btn" id="tab-seasonal" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel" data-view="seasonal">▦ Stagionalità</button><button class="tab-btn" id="tab-stats" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel" data-view="stats">⌁ Statistiche</button></div>
-<div id="panel" role="tabpanel" aria-labelledby="tab-trend"><article class="chart-card"><div class="chart-card-header"><div><h2 class="chart-card-title" id="chartTitle">Andamento temporale per stazione</h2><p class="chart-card-desc" id="chartDesc">Serie storica dei valori rilevati in ogni punto di campionamento</p></div><div class="station-toggles"><button class="stn-toggle s1 on" aria-pressed="true" data-station="S1">● S1 – Fosso Galeria 1</button><button class="stn-toggle s2 on" aria-pressed="true" data-station="S2">● S2 – Fosso Galeria 2</button></div></div><div class="chart-guide" id="guide"></div><div class="stats-scroll" id="summary" hidden></div><div class="chart-body"><div class="chart-wrap"><canvas id="chart" role="img" aria-label="Grafico delle misurazioni. Valori disponibili nella tabella dei dati sotto il grafico."></canvas><div id="empty" hidden>Nessun dato per questa selezione. Prova un altro anno o riattiva una stazione.</div></div></div><div class="chart-foot"><span id="coverage"></span><label><input type="checkbox" id="log"> Scala logaritmica</label></div></article></div>
-<details class="raw-data"><summary>Dati della selezione <span id="rawCount"></span></summary><p class="data-note">Valore originale, stima utilizzata e riga del file di origine. Il CSV include tutte le righe della selezione.</p><div class="stats-scroll"><table class="stats-table"><thead><tr><th>Data</th><th>Stazione</th><th>Risultato originale</th><th>Valore nel grafico</th><th>Unità originale</th><th>Fonte · riga</th></tr></thead><tbody id="rawBody"></tbody></table></div><div class="pagination"><button id="prev">← Precedenti</button><span id="pageInfo"></span><button id="next">Successive →</button></div></details>
-<p class="method-note" id="methodNote"></p><footer><span>Fosso Galeria · A SUD</span><span>7.220 misurazioni · 208 parametri · 103 campioni</span><button id="sources" class="text-button">Fonti e metodologia ↗</button></footer></section></main>
-<dialog id="infoDialog" aria-labelledby="infoTitle"><div class="modal-topbar"><h2 id="infoTitle">Scheda informativa</h2><button id="closeInfo" class="modal-close" aria-label="Chiudi scheda">✕</button></div><div class="modal-body"><section class="scheda-section"><span class="scheda-section-label">Il progetto</span><h3>Sei anni di monitoraggio</h3><p>Esplora le analisi dell'acqua superficiale del Fosso Galeria contenute nei due archivi forniti. Ogni campione può includere più parametri: il numero di misurazioni è quindi diverso dal numero di campioni.</p><div class="highlight-row"><div class="highlight-pill"><div class="hp-num">7.220</div><div class="hp-label">Misurazioni</div></div><div class="highlight-pill"><div class="hp-num">208</div><div class="hp-label">Parametri</div></div><div class="highlight-pill"><div class="hp-num">103</div><div class="hp-label">Campioni</div></div></div></section><section class="scheda-section"><span class="scheda-section-label">Le stazioni</span><h3>Due punti di campionamento</h3><p><strong>S1 · Roma – Fosso Galeria 1</strong><br>Codice F4.79/0 · 763 misurazioni.</p><p><strong>S2 · Roma – Fosso Galeria 2</strong><br>Codice F4.18/0 · 6.457 misurazioni.</p><p>I nomi seguono i file originali. Le stazioni non hanno necessariamente le stesse date o gli stessi parametri: le medie confrontano le osservazioni disponibili, non coppie di campioni simultanei.</p></section><section class="scheda-section"><span class="scheda-section-label">Metodologia</span><h3>Valori sotto quantificazione</h3><p>5.082 risultati (70,4%) sono riportati con il simbolo &lt;. Il valore indicato è una soglia analitica, non una concentrazione misurata; non consente da solo di affermare che la sostanza sia presente.</p><p>Per impostazione predefinita, grafici e statistiche usano metà della soglia (LOQ/2). È una convenzione esplorativa, non una misura certa né una stima necessariamente priva di distorsioni. Puoi confrontarla con zero, LOQ o escludere i valori non quantificati. I dati originali restano sempre disponibili.</p><p>Le denominazioni dei parametri restano quelle dei file: nomi differenti, anche se potenzialmente sinonimi, sono consultabili separatamente. Le medie sono aritmetiche, senza pesi. La stagionalità raggruppa per mese le osservazioni del periodo selezionato. Nei grafici temporali, le linee collegano i campioni e non rappresentano misurazioni continue.</p><p>Per BOD5 e COD, le etichette mg/L e mg/L (O2) sono presentate come mg/L (O₂), trattandosi dello stesso parametro. Il CSV conserva l'unità originale. Nessuna conversione numerica è stata applicata.</p></section><section class="scheda-section"><span class="scheda-section-label">Fonti</span><h3>Gli archivi utilizzati</h3><ul><li>risultatiriogaleria20-23.xlsx · foglio Dati · 4.605 righe</li><li>risultatiriogaleria24-25.xlsx · foglio Dati · 2.615 righe</li></ul><p>Periodo: 11 febbraio 2020 – 17 dicembre 2025. Ogni risultato mantiene il riferimento al campione, alla stazione e alla riga originale.</p></section><section class="scheda-section"><span class="scheda-section-label">Interpretazione</span><h3>Leggere i risultati nel loro contesto</h3><p>Questo strumento descrive i dati forniti. Non assegna giudizi di conformità o classi di qualità: i file non contengono un sistema di limiti normativi validato. Una differenza tra stazioni non identifica da sola l'origine di un eventuale inquinamento.</p></section></div></dialog><noscript><p>Attiva JavaScript per esplorare grafici e filtri.</p></noscript></body></html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fosso Galeria · Monitoraggio Ambientale Acque 2020–2025 · A SUD</title>
+  <meta name="description" content="Piattaforma pubblica e interattiva di A SUD per il monitoraggio della qualità delle acque del Fosso Galeria (Roma). 7.220 misurazioni, 208 parametri chimico-fisici dal 2020 al 2025.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Vai al contenuto principale</a>
+
+  <!-- ────── TOP NAVIGATION ────── -->
+  <header class="home-nav">
+    <div class="home-nav-inner">
+      <div class="nav-brand">
+        <img src="logo_asud.png" alt="Logo A SUD" class="nav-logo-img">
+        <div class="brand-text">
+          <span class="brand-title">Fosso Galeria</span>
+          <span class="brand-sub">Qualità Acque 2020–2025</span>
+        </div>
+      </div>
+      <nav aria-label="Navigazione principale">
+        <ul class="nav-links">
+          <li><a href="#progetto">Cos'è il progetto</a></li>
+          <li><a href="#guida">Come usare il sito</a></li>
+          <li><a href="#parametri">Parametri chiave</a></li>
+          <li><a href="#metodologia">Metodologia</a></li>
+        </ul>
+      </nav>
+      <a href="dashboard.html" class="nav-cta-btn" id="navCta">
+        Apri Dashboard ↗
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ────── HERO SECTION ────── -->
+    <section class="home-hero" aria-label="Introduzione al monitoraggio">
+      <div class="hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow-2" aria-hidden="true"></div>
+
+      <div class="hero-container">
+        <div class="hero-badge">
+          Monitoraggio Ambientale Indipendente · A SUD
+        </div>
+
+        <h1 class="hero-main-title">
+          Le acque del <span>Fosso Galeria</span>: 6 anni di dati, analisi e trasparenza
+        </h1>
+
+        <p class="hero-subtitle">
+          Una piattaforma pubblica e interattiva per esplorare <strong>7.220 misurazioni chimico-fisiche</strong> raccolte tra il 2020 e il 2025 in due stazioni di campionamento nella Valle Galeria a Roma. Conoscere lo stato dell'acqua è il primo passo per difendere la salute dell'ecosistema e della comunità.
+        </p>
+
+        <div class="hero-actions">
+          <a href="dashboard.html" class="btn-primary-hero" id="heroStartBtn">
+            Esplora la Dashboard Interattiva →
+          </a>
+          <a href="#guida" class="btn-secondary-hero">
+            Scopri come usare il sito ↓
+          </a>
+        </div>
+
+        <!-- Metric highlights -->
+        <div class="hero-metrics-grid" aria-label="Indicatori sintetici del monitoraggio">
+          <div class="metric-box">
+            <div class="metric-num">7.220</div>
+            <div class="metric-title">Misurazioni</div>
+            <div class="metric-desc">Valori registrati dai laboratori</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num">208</div>
+            <div class="metric-title">Parametri</div>
+            <div class="metric-desc">Sostanze chimiche e indici fisici</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num">6 Anni</div>
+            <div class="metric-title">Serie storica</div>
+            <div class="metric-desc">Continuità da inizio 2020 a fine 2025</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num">2</div>
+            <div class="metric-title">Stazioni</div>
+            <div class="metric-desc">S1 (F4.79/0) ed S2 (F4.18/0)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num">103</div>
+            <div class="metric-title">Campioni</div>
+            <div class="metric-desc">Eventi di campionamento sul campo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────── SEZIONE 1: COS'È IL PROGETTO ────── -->
+    <section class="section" id="progetto" aria-labelledby="title-progetto">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Il contesto territoriale</span>
+          <h2 class="section-title" id="title-progetto">Un corso d'acqua nel cuore di una valle sotto pressione</h2>
+          <p class="section-lead">
+            La Valle Galeria, nel quadrante ovest di Roma, è un territorio storicamente segnato da un'altissima concentrazione di impianti ad impatto ambientale. Questa piattaforma restituisce alla cittadinanza il libero accesso ai dati sullo stato delle acque del Fosso Galeria.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <div class="narrative-card">
+            <h3>Perché questo monitoraggio è cruciale</h3>
+            <p>
+              Il <strong>Fosso Galeria</strong> è un corso d'acqua superficiale che attraversa per circa 14 chilometri la piana della Valle Galeria fino a confluire nel fiume Tevere. Nel suo bacino idrografico insistono o hanno insistito per decenni impianti ad elevato carico ambientale: la discarica di Malagrotta (la più grande d'Europa nel suo periodo di attività), impianti di trattamento e smaltimento rifiuti, una raffineria petrolifera riconvertita in deposito carburanti, cave estrattive e depuratori.
+            </p>
+            <div class="highlight-box">
+              «L'accesso pubblico e trasparente ai dati ambientali è una condizione imprescindibile per tutelare i beni comuni, la salute collettiva e il diritto a un ambiente sano.»
+            </div>
+            <p>
+              L'associazione <strong>A SUD</strong>, attiva da oltre vent'anni sui temi dell'ecologia, della giustizia climatica e dei conflitti ambientali, ha promosso la digitalizzazione e la valorizzazione di questo archivio analitico. L'obiettivo è trasformare dati tecnici complessi in uno strumento chiaro, verificabile e aperto a comitati territoriali, ricercatori, giornalisti e semplici cittadini.
+            </p>
+          </div>
+
+          <div class="stations-card-wrap">
+            <article class="station-card">
+              <span class="station-badge s1">Stazione S1 · Monte</span>
+              <h4 class="station-title">Roma – Fosso Galeria 1</h4>
+              <div class="station-meta">
+                <span>Codice: F4.79/0</span>
+                <span>763 misurazioni</span>
+              </div>
+              <p class="station-desc">
+                Punto di campionamento situato nella porzione a monte del tratto investigato. Fornisce il quadro di riferimento della qualità delle acque prima dei maggiori apporti industriali e di scarico della valle.
+              </p>
+            </article>
+
+            <article class="station-card">
+              <span class="station-badge s2">Stazione S2 · Valle</span>
+              <h4 class="station-title">Roma – Fosso Galeria 2</h4>
+              <div class="station-meta">
+                <span>Codice: F4.18/0</span>
+                <span>6.457 misurazioni</span>
+              </div>
+              <p class="station-desc">
+                Punto di monitoraggio a valle, caratterizzato dalla serie storica più densa e continuativa (oltre l'89% dei dati totali). È la stazione chiave per monitorare il carico complessivo di inquinanti accumulato lungo il corso d'acqua.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────── SEZIONE 2: COME USARE IL SITO (4 STEP) ────── -->
+    <section class="section section-alt" id="guida" aria-labelledby="title-guida">
+      <div class="section-container">
+        <div class="section-header centered">
+          <span class="section-tag">Guida pratica alla dashboard</span>
+          <h2 class="section-title" id="title-guida">Come esplorare i dati e usare la piattaforma</h2>
+          <p class="section-lead">
+            La dashboard è progettata per essere potente per gli esperti ma intuitiva per chiunque. Ecco quattro semplici passaggi per orientarsi nell'analisi.
+          </p>
+        </div>
+
+        <div class="guide-steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-num">01</span>
+              <div class="step-icon" aria-hidden="true">🔍</div>
+            </div>
+            <h3 class="step-title">Cerca il parametro</h3>
+            <p class="step-body">
+              Usa la barra di ricerca rapida in cima alla dashboard per selezionare una tra le <strong>208 sostanze</strong> analizzate: dall'ossigeno disciolto ai nutrienti (azoto, fosforo), dai metalli pesanti (ferro, manganese, nichel) agli idrocarburi e solventi.
+            </p>
+            <ul class="step-features">
+              <li>Ricerca istantanea con filtro digitato</li>
+              <li>Unità di misura visualizzata in automatico</li>
+              <li>Metriche aggregate (media, picco, conteggio)</li>
+            </ul>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-num">02</span>
+              <div class="step-icon" aria-hidden="true">📊</div>
+            </div>
+            <h3 class="step-title">Scegli la vista grafica</h3>
+            <p class="step-body">
+              Naviga tra <strong>4 modalità di visualizzazione</strong> per analizzare i dati da diverse prospettive analitiche:
+            </p>
+            <ul class="step-features">
+              <li><strong>↗ Andamento</strong>: serie storica 2020–2025 nel tempo</li>
+              <li><strong>▥ Confronto</strong>: medie e massimi tra S1 ed S2</li>
+              <li><strong>▦ Stagionalità</strong>: variazioni mese per mese</li>
+              <li><strong>⌁ Statistiche</strong>: confronto annuale e tabelle</li>
+            </ul>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-num">03</span>
+              <div class="step-icon" aria-hidden="true">⚖️</div>
+            </div>
+            <h3 class="step-title">Gestisci i valori &lt; LOQ</h3>
+            <p class="step-body">
+              Il <strong>70,4% dei risultati</strong> (5.082 misure) riporta il simbolo «&lt;», indicando valori sotto la soglia di quantificazione analitica. Puoi scegliere con rigore come trattarli:
+            </p>
+            <ul class="step-features">
+              <li><strong>LOQ/2</strong>: convenzione esplorativa standard (default)</li>
+              <li><strong>Zero</strong>: stima minima prudenziale</li>
+              <li><strong>LOQ</strong>: stima alla soglia massima</li>
+              <li><strong>Escludi</strong>: considera solo i quantificati certi</li>
+            </ul>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step-card">
+            <div class="step-header">
+              <span class="step-num">04</span>
+              <div class="step-icon" aria-hidden="true">📥</div>
+            </div>
+            <h3 class="step-title">Ispeziona ed esporta</h3>
+            <p class="step-body">
+              Massima tracciabilità: puoi consultare la tabella riga per riga con data, stazione, risultato originale e riga di registro, oppure scaricare i dati filtrati con un semplice click.
+            </p>
+            <ul class="step-features">
+              <li>Tabella dati originali paginata</li>
+              <li>Download CSV immediato per analisi esterne</li>
+              <li>Scala logaritmica attivabile per picchi elevati</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────── SEZIONE 3: PARAMETRI CHIAVE (ACCESSO RAPIDO) ────── -->
+    <section class="section" id="parametri" aria-labelledby="title-parametri">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Accesso rapido ai dati</span>
+          <h2 class="section-title" id="title-parametri">Parametri ambientali prioritari</h2>
+          <p class="section-lead">
+            Non sai da dove iniziare? Clicca su uno dei parametri chiave per aprire direttamente la dashboard con quel dato già selezionato:
+          </p>
+        </div>
+
+        <div class="parameters-grid">
+          <!-- Parametro 1 -->
+          <a href="dashboard.html?param=%25+OSSIGENO+DISCIOLTO" class="param-card">
+            <div>
+              <div class="param-top">
+                <span class="param-tag">Stato Ecologico</span>
+                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+              </div>
+              <h3 class="param-name">% Ossigeno Disciolto</h3>
+              <p class="param-desc">
+                L'ossigeno disciolto è vitale per la fauna ittica e l'equilibrio fluviale. Valori costantemente bassi sono sintomo di anossia causata da scarichi organici o proliferazione di alghe.
+              </p>
+            </div>
+            <div class="param-cta">Vedi andamento nella dashboard →</div>
+          </a>
+
+          <!-- Parametro 2 -->
+          <a href="dashboard.html?param=BOD5" class="param-card">
+            <div>
+              <div class="param-top">
+                <span class="param-tag">Carico Organico</span>
+                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+              </div>
+              <h3 class="param-name">BOD5 (Domanda Bioch. O₂)</h3>
+              <p class="param-desc">
+                Misura la quantità di ossigeno necessaria ai microrganismi per decomporre la sostanza organica. Picchi elevati indicano presenza di reflui civili, zootecnici o industriali non depurati.
+              </p>
+            </div>
+            <div class="param-cta">Vedi andamento nella dashboard →</div>
+          </a>
+
+          <!-- Parametro 3 -->
+          <a href="dashboard.html?param=COD" class="param-card">
+            <div>
+              <div class="param-top">
+                <span class="param-tag">Carico Chimico</span>
+                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+              </div>
+              <h3 class="param-name">COD (Domanda Chimica O₂)</h3>
+              <p class="param-desc">
+                Rappresenta la quantità totale di ossigeno consumata dall'ossidazione chimica delle sostanze presenti (organiche e inorganiche), offrendo un indice sintetico di contaminazione.
+              </p>
+            </div>
+            <div class="param-cta">Vedi andamento nella dashboard →</div>
+          </a>
+
+          <!-- Parametro 4 -->
+          <a href="dashboard.html?param=AZOTO+AMMONIACALE+(NH4)" class="param-card">
+            <div>
+              <div class="param-top">
+                <span class="param-tag">Nutrienti & Inquinamento</span>
+                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+              </div>
+              <h3 class="param-name">Azoto Ammoniacale (NH₄⁺)</h3>
+              <p class="param-desc">
+                Composto tossico per gli organismi acquatici derivante dalla decomposizione di scarti azotati e liquami. È un indice diretto di contaminazione da scarichi fognari o percolati.
+              </p>
+            </div>
+            <div class="param-cta">Vedi andamento nella dashboard →</div>
+          </a>
+
+          <!-- Parametro 5 -->
+          <a href="dashboard.html?param=FERRO" class="param-card">
+            <div>
+              <div class="param-top">
+                <span class="param-tag">Metalli</span>
+                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+              </div>
+              <h3 class="param-name">Ferro (Fe)</h3>
+              <p class="param-desc">
+                Metallo presente sia naturalmente nel suolo laziale sia come potenziale tracciante di acque di dilavamento di aree industriali, scarti di lavorazione e sedimenti alterati.
+              </p>
+            </div>
+            <div class="param-cta">Vedi andamento nella dashboard →</div>
+          </a>
+
+          <!-- Parametro 6 -->
+          <a href="dashboard.html?param=SOLFATI" class="param-card">
+            <div>
+              <div class="param-top">
+                <span class="param-tag">Anioni & Salinità</span>
+                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+              </div>
+              <h3 class="param-name">Solfati (SO₄²⁻)</h3>
+              <p class="param-desc">
+                Composti salini la cui concentrazione può dipendere sia dalla natura litologica del bacino che dall'impatto di scarichi e attività di trasformazione dei rifiuti.
+              </p>
+            </div>
+            <div class="param-cta">Vedi andamento nella dashboard →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────── SEZIONE 4: METODOLOGIA E RIGORE ────── -->
+    <section class="section section-alt" id="metodologia" aria-labelledby="title-metodologia">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Trasparenza e scientificità</span>
+          <h2 class="section-title" id="title-metodologia">Metodologia e fonti dei dati</h2>
+          <p class="section-lead">
+            Come sono stati acquisiti, elaborati e presentati i dati analitici pubblicati sulla piattaforma.
+          </p>
+        </div>
+
+        <div class="methodology-grid">
+          <article class="method-card">
+            <h3>Gli Archivi Originali</h3>
+            <p>
+              I dati provengono dai registri di analisi delle acque superficiali del Fosso Galeria raccolti in due bienni distinti:
+            </p>
+            <ul>
+              <li><strong>2020–2023</strong>: 4.605 righe analitiche (dal 11 febbraio 2020 al 19 dicembre 2023)</li>
+              <li><strong>2024–2025</strong>: 2.615 righe analitiche (dal 16 gennaio 2024 al 17 dicembre 2025)</li>
+            </ul>
+            <p style="margin-top:1rem;">
+              Complessivamente sono coperte 103 giornate di campionamento sul campo, per un totale rigoroso di 7.220 misurazioni verificate.
+            </p>
+          </article>
+
+          <article class="method-card">
+            <h3>Integrità del Dato</h3>
+            <p>
+              Nessun valore numerico originale è stato modificato o ricalcolato. Ogni misurazione mantiene il riferimento al codice del campione, alla data esatta, alla stazione e alla riga del file sorgente.
+            </p>
+            <ul>
+              <li>Le medie calcolate sono puramente aritmetiche, senza pesi arbitrari</li>
+              <li>I valori con etichette equivalenti (es. BOD5 in mg/L e mg/L O₂) sono unificati per leggibilità mantenendo l'unità originale nel CSV</li>
+              <li>Nei grafici temporali le linee congiungono i campioni per facilitare la lettura visiva senza simulare misurazioni continue</li>
+            </ul>
+          </article>
+
+          <article class="method-card">
+            <h3>Interpretazione Consapevole</h3>
+            <p>
+              Questo portale ha finalità informative, descrittive e di monitoraggio civico.
+            </p>
+            <ul>
+              <li>I file di origine non contengono una classificazione normativa automatica di conformità</li>
+              <li>Una discrepanza tra stazioni documenta una differenza di concentrazione, ma richiede valutazioni idrologiche e geochimiche per identificare l'origine esatta</li>
+              <li>I dati aperti sono a disposizione della comunità scientifica per ogni approfondimento</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────── SEZIONE 5: CALL TO ACTION FINALE ────── -->
+    <section class="final-cta-section" aria-label="Invito all'esplorazione">
+      <div class="final-cta-card">
+        <div class="final-cta-inner">
+          <span class="final-cta-tag">Inizia subito</span>
+          <h2 class="final-cta-title">Esplora 6 anni di dati sul Fosso Galeria</h2>
+          <p class="final-cta-desc">
+            Visualizza grafici temporali, confronta le stazioni S1 ed S2, analizza la stagionalità e scarica i dati completi in formato aperto.
+          </p>
+          <a href="dashboard.html" class="btn-large-cta">
+            Apri la Dashboard Dati ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ────── FOOTER ────── -->
+  <footer class="home-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo_asud.png" alt="A SUD" class="footer-logo">
+        <p class="footer-text">
+          <strong>A SUD · Centro di Documentazione sui Conflitti Ambientali</strong> promuove la giustizia ambientale, la citizen science, il diritto alla salute e l'accesso pubblico alle informazioni territoriali.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigazione</h4>
+        <ul>
+          <li><a href="#progetto">Cos'è il progetto</a></li>
+          <li><a href="#guida">Come usare il sito</a></li>
+          <li><a href="#parametri">Parametri prioritari</a></li>
+          <li><a href="#metodologia">Metodologia scientifica</a></li>
+          <li><a href="dashboard.html">Dashboard interattiva</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Risorse & Dati</h4>
+        <ul>
+          <li><a href="dashboard.html">Esplora 208 parametri</a></li>
+          <li><a href="dashboard.html#info">Scheda informativa completa</a></li>
+          <li><a href="https://github.com/veramalavolti/fosso-galeria-2020-2025" target="_blank" rel="noopener noreferrer">Codice sorgente su GitHub ↗</a></li>
+          <li><a href="https://asud.net" target="_blank" rel="noopener noreferrer">Sito ufficiale A SUD ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>Fosso Galeria · Monitoraggio qualità acque 2020–2025 · A SUD Onlus</span>
+      <span>7.220 misurazioni analitiche · Open Data civico</span>
+    </div>
+  </footer>
+</body>
+</html>
