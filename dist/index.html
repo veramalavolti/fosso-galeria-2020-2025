@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fosso Galeria · Monitoraggio Ambientale Acque 2020–2025 · A SUD</title>
-  <meta name="description" content="Piattaforma pubblica e interattiva di A SUD per il monitoraggio della qualità delle acque del Fosso Galeria (Roma). 7.220 misurazioni, 208 parametri chimico-fisici dal 2020 al 2025.">
+  <meta name="description" content="Piattaforma pubblica e interattiva di A SUD per il monitoraggio della qualità delle acque del Fosso Galeria (Roma). 2.077 misurazioni di 30 parametri chimico-fisici e microbiologici, confrontati con i rispettivi valori soglia, dal 2020 al 2025.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
+  <script type="module" src="home.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Vai al contenuto principale</a>
@@ -29,6 +30,7 @@
           <li><a href="#progetto">Cos'è il progetto</a></li>
           <li><a href="#guida">Come usare il sito</a></li>
           <li><a href="#parametri">Parametri chiave</a></li>
+          <li><a href="#soglie">Valori soglia</a></li>
           <li><a href="#metodologia">Metodologia</a></li>
         </ul>
       </nav>
@@ -45,16 +47,12 @@
       <div class="hero-glow-2" aria-hidden="true"></div>
 
       <div class="hero-container">
-        <div class="hero-badge">
-          Monitoraggio Ambientale Indipendente · A SUD
-        </div>
-
         <h1 class="hero-main-title">
           Le acque del <span>Fosso Galeria</span>: 6 anni di dati, analisi e trasparenza
         </h1>
 
         <p class="hero-subtitle">
-          Una piattaforma pubblica e interattiva per esplorare <strong>7.220 misurazioni chimico-fisiche</strong> raccolte tra il 2020 e il 2025 in due stazioni di campionamento nella Valle Galeria a Roma. Conoscere lo stato dell'acqua è il primo passo per difendere la salute dell'ecosistema e della comunità.
+          Una piattaforma pubblica e interattiva per esplorare <strong>2.077 misurazioni di 30 parametri</strong>, ciascuno confrontato con il proprio valore soglia, raccolte tra il 2020 e il 2025 in due stazioni di campionamento nella Valle Galeria a Roma. Conoscere lo stato dell'acqua è il primo passo per difendere la salute dell'ecosistema e della comunità.
         </p>
 
         <div class="hero-actions">
@@ -69,14 +67,14 @@
         <!-- Metric highlights -->
         <div class="hero-metrics-grid" aria-label="Indicatori sintetici del monitoraggio">
           <div class="metric-box">
-            <div class="metric-num">7.220</div>
+            <div class="metric-num">2.077</div>
             <div class="metric-title">Misurazioni</div>
             <div class="metric-desc">Valori registrati dai laboratori</div>
           </div>
           <div class="metric-box">
-            <div class="metric-num">208</div>
+            <div class="metric-num">30</div>
             <div class="metric-title">Parametri</div>
-            <div class="metric-desc">Sostanze chimiche e indici fisici</div>
+            <div class="metric-desc">Ognuno con il proprio valore soglia</div>
           </div>
           <div class="metric-box">
             <div class="metric-num">6 Anni</div>
@@ -128,7 +126,7 @@
               <h4 class="station-title">Roma – Fosso Galeria 1</h4>
               <div class="station-meta">
                 <span>Codice: F4.79/0</span>
-                <span>763 misurazioni</span>
+                <span>630 misurazioni</span>
               </div>
               <p class="station-desc">
                 Punto di campionamento situato nella porzione a monte del tratto investigato. Fornisce il quadro di riferimento della qualità delle acque prima dei maggiori apporti industriali e di scarico della valle.
@@ -140,10 +138,10 @@
               <h4 class="station-title">Roma – Fosso Galeria 2</h4>
               <div class="station-meta">
                 <span>Codice: F4.18/0</span>
-                <span>6.457 misurazioni</span>
+                <span>1.447 misurazioni</span>
               </div>
               <p class="station-desc">
-                Punto di monitoraggio a valle, caratterizzato dalla serie storica più densa e continuativa (oltre l'89% dei dati totali). È la stazione chiave per monitorare il carico complessivo di inquinanti accumulato lungo il corso d'acqua.
+                Punto di monitoraggio a valle, caratterizzato dalla serie storica più densa e continuativa (circa il 70% dei dati totali) e dall'unico rilevamento di PFOS, pesticidi e solventi. È la stazione chiave per monitorare il carico complessivo di inquinanti accumulato lungo il corso d'acqua.
               </p>
             </article>
           </div>
@@ -171,11 +169,11 @@
             </div>
             <h3 class="step-title">Cerca il parametro</h3>
             <p class="step-body">
-              Usa la barra di ricerca rapida in cima alla dashboard per selezionare una tra le <strong>208 sostanze</strong> analizzate: dall'ossigeno disciolto ai nutrienti (azoto, fosforo), dai metalli pesanti (ferro, manganese, nichel) agli idrocarburi e solventi.
+              Usa la barra di ricerca rapida in cima alla dashboard per selezionare uno dei <strong>30 parametri</strong> analizzati: dall'ossigeno disciolto ai nutrienti (azoto, fosforo), dai metalli (arsenico, cadmio, mercurio, nichel, piombo) ai PFAS, ai pesticidi, agli idrocarburi e ai solventi.
             </p>
             <ul class="step-features">
               <li>Ricerca istantanea con filtro digitato</li>
-              <li>Unità di misura visualizzata in automatico</li>
+              <li>Unità di misura e valore soglia visualizzati in automatico</li>
               <li>Metriche aggregate (media, picco, conteggio)</li>
             </ul>
           </div>
@@ -191,7 +189,7 @@
               Naviga tra <strong>4 modalità di visualizzazione</strong> per analizzare i dati da diverse prospettive analitiche:
             </p>
             <ul class="step-features">
-              <li><strong>↗ Andamento</strong>: serie storica 2020–2025 nel tempo</li>
+              <li><strong>↗ Andamento</strong>: serie storica 2020–2025 con la linea di soglia</li>
               <li><strong>▥ Confronto</strong>: medie e massimi tra S1 ed S2</li>
               <li><strong>▦ Stagionalità</strong>: variazioni mese per mese</li>
               <li><strong>⌁ Statistiche</strong>: confronto annuale e tabelle</li>
@@ -206,7 +204,7 @@
             </div>
             <h3 class="step-title">Gestisci i valori &lt; LOQ</h3>
             <p class="step-body">
-              Il <strong>70,4% dei risultati</strong> (5.082 misure) riporta il simbolo «&lt;», indicando valori sotto la soglia di quantificazione analitica. Puoi scegliere con rigore come trattarli:
+              Il <strong>33,9% dei risultati</strong> (705 misure) riporta il simbolo «&lt;», indicando valori sotto la soglia di quantificazione analitica. Puoi scegliere con rigore come trattarli:
             </p>
             <ul class="step-features">
               <li><strong>LOQ/2</strong>: convenzione esplorativa standard (default)</li>
@@ -228,6 +226,7 @@
             </p>
             <ul class="step-features">
               <li>Tabella dati originali paginata</li>
+              <li>Confronto con la soglia per ogni risultato</li>
               <li>Download CSV immediato per analisi esterne</li>
               <li>Scala logaritmica attivabile per picchi elevati</li>
             </ul>
@@ -248,92 +247,87 @@
         </div>
 
         <div class="parameters-grid">
-          <!-- Parametro 1 -->
-          <a href="dashboard.html?param=%25+OSSIGENO+DISCIOLTO" class="param-card">
+          <a href="dashboard.html?param=OSSIGENO+DISCIOLTO" class="param-card">
             <div>
               <div class="param-top">
                 <span class="param-tag">Stato Ecologico</span>
                 <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
               </div>
-              <h3 class="param-name">% Ossigeno Disciolto</h3>
+              <h3 class="param-name">Ossigeno Disciolto</h3>
               <p class="param-desc">
                 L'ossigeno disciolto è vitale per la fauna ittica e l'equilibrio fluviale. Valori costantemente bassi sono sintomo di anossia causata da scarichi organici o proliferazione di alghe.
               </p>
+              <p class="param-threshold">Soglia: ≥ 5 mg/L (≥ 70% di saturazione)</p>
             </div>
             <div class="param-cta">Vedi andamento nella dashboard →</div>
           </a>
-
-          <!-- Parametro 2 -->
           <a href="dashboard.html?param=BOD5" class="param-card">
             <div>
               <div class="param-top">
                 <span class="param-tag">Carico Organico</span>
-                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+                <span style="color:var(--lime-dark);font-weight:800;">52 misure</span>
               </div>
               <h3 class="param-name">BOD5 (Domanda Bioch. O₂)</h3>
               <p class="param-desc">
                 Misura la quantità di ossigeno necessaria ai microrganismi per decomporre la sostanza organica. Picchi elevati indicano presenza di reflui civili, zootecnici o industriali non depurati.
               </p>
+              <p class="param-threshold">Soglia: 20 mg/L O₂</p>
             </div>
             <div class="param-cta">Vedi andamento nella dashboard →</div>
           </a>
-
-          <!-- Parametro 3 -->
           <a href="dashboard.html?param=COD" class="param-card">
             <div>
               <div class="param-top">
                 <span class="param-tag">Carico Chimico</span>
-                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+                <span style="color:var(--lime-dark);font-weight:800;">52 misure</span>
               </div>
               <h3 class="param-name">COD (Domanda Chimica O₂)</h3>
               <p class="param-desc">
                 Rappresenta la quantità totale di ossigeno consumata dall'ossidazione chimica delle sostanze presenti (organiche e inorganiche), offrendo un indice sintetico di contaminazione.
               </p>
+              <p class="param-threshold">Soglia: 100 mg/L O₂</p>
             </div>
             <div class="param-cta">Vedi andamento nella dashboard →</div>
           </a>
-
-          <!-- Parametro 4 -->
-          <a href="dashboard.html?param=AZOTO+AMMONIACALE+(NH4)" class="param-card">
+          <a href="dashboard.html?param=AZOTO+AMMONIACALE" class="param-card">
             <div>
               <div class="param-top">
-                <span class="param-tag">Nutrienti & Inquinamento</span>
-                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+                <span class="param-tag">Nutrienti &amp; Inquinamento</span>
+                <span style="color:var(--lime-dark);font-weight:800;">52 misure</span>
               </div>
               <h3 class="param-name">Azoto Ammoniacale (NH₄⁺)</h3>
               <p class="param-desc">
                 Composto tossico per gli organismi acquatici derivante dalla decomposizione di scarti azotati e liquami. È un indice diretto di contaminazione da scarichi fognari o percolati.
               </p>
+              <p class="param-threshold">Soglia: 2 mg/L NH₄</p>
             </div>
             <div class="param-cta">Vedi andamento nella dashboard →</div>
           </a>
-
-          <!-- Parametro 5 -->
-          <a href="dashboard.html?param=FERRO" class="param-card">
+          <a href="dashboard.html?param=ARSENICO+DISCIOLTO" class="param-card">
             <div>
               <div class="param-top">
                 <span class="param-tag">Metalli</span>
-                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+                <span style="color:var(--lime-dark);font-weight:800;">100 misure</span>
               </div>
-              <h3 class="param-name">Ferro (Fe)</h3>
+              <h3 class="param-name">Arsenico Disciolto</h3>
               <p class="param-desc">
-                Metallo presente sia naturalmente nel suolo laziale sia come potenziale tracciante di acque di dilavamento di aree industriali, scarti di lavorazione e sedimenti alterati.
+                Elemento tossico presente naturalmente nei terreni vulcanici del Lazio, ma anche possibile tracciante di scarichi industriali, percolati e acque di dilavamento di aree contaminate.
               </p>
+              <p class="param-threshold">Soglia: 0,02 mg/L (20 µg/L)</p>
             </div>
             <div class="param-cta">Vedi andamento nella dashboard →</div>
           </a>
-
-          <!-- Parametro 6 -->
-          <a href="dashboard.html?param=SOLFATI" class="param-card">
+          <a href="dashboard.html?param=ACIDO+PERFLUOROOTTANSOLFONICO+%28PFOS%29" class="param-card">
             <div>
               <div class="param-top">
-                <span class="param-tag">Anioni & Salinità</span>
-                <span style="color:var(--lime-dark);font-weight:800;">103 misure</span>
+                <span class="param-tag">Contaminanti Emergenti</span>
+                <span style="color:var(--lime-dark);font-weight:800;">47 misure</span>
               </div>
-              <h3 class="param-name">Solfati (SO₄²⁻)</h3>
+              <h3 class="param-name">PFOS (Perfluoroottansolfonato)</h3>
               <p class="param-desc">
-                Composti salini la cui concentrazione può dipendere sia dalla natura litologica del bacino che dall'impatto di scarichi e attività di trasformazione dei rifiuti.
+                Sostanza perfluoroalchilica (PFAS) estremamente persistente e bioaccumulabile, impiegata in schiume antincendio e trattamenti industriali. È misurata nella sola stazione S2.
               </p>
+              <p class="param-threshold">Soglia: 0,00065 µg/L</p>
             </div>
             <div class="param-cta">Vedi andamento nella dashboard →</div>
           </a>
@@ -341,8 +335,41 @@
       </div>
     </section>
 
+    <!-- ────── SEZIONE 4: VALORI SOGLIA ────── -->
+    <section class="section section-alt" id="soglie" aria-labelledby="title-soglie">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Parametri e valori di riferimento</span>
+          <h2 class="section-title" id="title-soglie">Valori soglia dei 30 parametri</h2>
+          <p class="section-lead">
+            Ogni parametro monitorato è confrontato con il proprio valore soglia. Per ciascuno trovi il numero di risultati fuori soglia nell'intero periodo 2020–2025, in entrambe le stazioni. Clicca sul nome per aprire il parametro nella dashboard.
+          </p>
+        </div>
+
+        <div class="threshold-filter" role="group" aria-label="Filtra la tabella delle soglie">
+          <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">Tutti i parametri <span id="countAll"></span></button>
+          <button type="button" class="filter-chip" data-filter="out" aria-pressed="false">Solo con valori fuori soglia <span id="countOut"></span></button>
+        </div>
+
+        <div class="threshold-table-wrap">
+          <table class="threshold-table">
+            <thead>
+              <tr><th scope="col">N.</th><th scope="col">Parametro</th><th scope="col">Valore soglia</th><th scope="col">Misure</th><th scope="col">Fuori soglia</th></tr>
+            </thead>
+            <tbody id="thresholdRows">
+              <tr><td colspan="5" id="thresholdStatus">Caricamento delle soglie…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <noscript><p class="threshold-legend">Attiva JavaScript per visualizzare la tabella delle soglie.</p></noscript>
+        <p class="threshold-legend">
+          Riferimento principale: DM 185/2003 (limiti per il riutilizzo delle acque reflue). * Soglia tratta da riferimenti integrativi. Quando la soglia è espressa in un'unità diversa da quella dei dati, viene convertita la soglia e non i valori misurati. «Non valutabili»: risultati «&lt;» il cui limite di quantificazione supera la soglia.
+        </p>
+      </div>
+    </section>
+
     <!-- ────── SEZIONE 4: METODOLOGIA E RIGORE ────── -->
-    <section class="section section-alt" id="metodologia" aria-labelledby="title-metodologia">
+    <section class="section" id="metodologia" aria-labelledby="title-metodologia">
       <div class="section-container">
         <div class="section-header">
           <span class="section-tag">Trasparenza e scientificità</span>
@@ -354,16 +381,16 @@
 
         <div class="methodology-grid">
           <article class="method-card">
-            <h3>Gli Archivi Originali</h3>
+            <h3>L'Archivio Originale</h3>
             <p>
-              I dati provengono dai registri di analisi delle acque superficiali del Fosso Galeria raccolti in due bienni distinti:
+              I dati provengono dal registro di analisi delle acque superficiali del Fosso Galeria, in un unico archivio:
             </p>
             <ul>
-              <li><strong>2020–2023</strong>: 4.605 righe analitiche (dal 11 febbraio 2020 al 19 dicembre 2023)</li>
-              <li><strong>2024–2025</strong>: 2.615 righe analitiche (dal 16 gennaio 2024 al 17 dicembre 2025)</li>
+              <li><strong>risultati FOSSO GALERIA 1 E 2 FINALI.xlsx</strong>: 2.077 righe analitiche (dall'11 febbraio 2020 al 17 dicembre 2025)</li>
+              <li><strong>30 parametri</strong>, ciascuno con il proprio valore soglia di riferimento</li>
             </ul>
             <p style="margin-top:1rem;">
-              Complessivamente sono coperte 103 giornate di campionamento sul campo, per un totale rigoroso di 7.220 misurazioni verificate.
+              Complessivamente sono coperti 103 campionamenti sul campo (36 in S1 e 67 in S2), per un totale di 2.077 misurazioni.
             </p>
           </article>
 
@@ -375,6 +402,7 @@
             <ul>
               <li>Le medie calcolate sono puramente aritmetiche, senza pesi arbitrari</li>
               <li>I valori con etichette equivalenti (es. BOD5 in mg/L e mg/L O₂) sono unificati per leggibilità mantenendo l'unità originale nel CSV</li>
+              <li>Le soglie espresse in unità diverse da quelle dei dati (es. mg/L e µg/L) sono convertite; i valori misurati restano invariati</li>
               <li>Nei grafici temporali le linee congiungono i campioni per facilitare la lettura visiva senza simulare misurazioni continue</li>
             </ul>
           </article>
@@ -385,7 +413,7 @@
               Questo portale ha finalità informative, descrittive e di monitoraggio civico.
             </p>
             <ul>
-              <li>I file di origine non contengono una classificazione normativa automatica di conformità</li>
+              <li>Il confronto con le soglie segnala i valori da approfondire, ma un singolo superamento non costituisce da solo una valutazione formale di conformità</li>
               <li>Una discrepanza tra stazioni documenta una differenza di concentrazione, ma richiede valutazioni idrologiche e geochimiche per identificare l'origine esatta</li>
               <li>I dati aperti sono a disposizione della comunità scientifica per ogni approfondimento</li>
             </ul>
@@ -427,6 +455,7 @@
           <li><a href="#progetto">Cos'è il progetto</a></li>
           <li><a href="#guida">Come usare il sito</a></li>
           <li><a href="#parametri">Parametri prioritari</a></li>
+          <li><a href="#soglie">Valori soglia</a></li>
           <li><a href="#metodologia">Metodologia scientifica</a></li>
           <li><a href="dashboard.html">Dashboard interattiva</a></li>
         </ul>
@@ -435,7 +464,7 @@
       <div class="footer-col">
         <h4>Risorse & Dati</h4>
         <ul>
-          <li><a href="dashboard.html">Esplora 208 parametri</a></li>
+          <li><a href="dashboard.html">Esplora 30 parametri</a></li>
           <li><a href="dashboard.html#info">Scheda informativa completa</a></li>
           <li><a href="https://github.com/veramalavolti/fosso-galeria-2020-2025" target="_blank" rel="noopener noreferrer">Codice sorgente su GitHub ↗</a></li>
           <li><a href="https://asud.net" target="_blank" rel="noopener noreferrer">Sito ufficiale A SUD ↗</a></li>
@@ -445,7 +474,7 @@
 
     <div class="footer-bottom">
       <span>Fosso Galeria · Monitoraggio qualità acque 2020–2025 · A SUD Onlus</span>
-      <span>7.220 misurazioni analitiche · Open Data civico</span>
+      <span>2.077 misurazioni analitiche · 30 parametri con valore soglia · Open Data civico</span>
     </div>
   </footer>
 </body>

@@ -1013,3 +1013,170 @@ a {
     padding: 3rem 1.5rem;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION: VALORI SOGLIA
+   ───────────────────────────────────────────────────────────── */
+.param-threshold {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #9A2E22;
+  margin: -0.5rem 0 1.25rem;
+}
+
+.threshold-table-wrap {
+  overflow-x: auto;
+  background: var(--cream-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.threshold-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.threshold-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-inv);
+  background: var(--teal);
+  padding: 0.9rem 1rem;
+  white-space: nowrap;
+}
+
+.threshold-table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.threshold-table tbody tr:hover td {
+  background: var(--lime-soft);
+}
+
+.threshold-table td.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.threshold-table td.name a {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--lime-border);
+  text-underline-offset: 3px;
+}
+
+.threshold-table td.name a:hover {
+  text-decoration-color: var(--lime-dark);
+}
+
+.threshold-table td.out {
+  color: #9A2E22;
+  font-weight: 700;
+}
+
+.threshold-legend {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .threshold-table {
+    font-size: 0.85rem;
+  }
+  .threshold-table th,
+  .threshold-table td {
+    padding: 0.6rem 0.7rem;
+  }
+}
+
+.threshold-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-chip {
+  font: 700 0.85rem var(--font-body);
+  color: var(--teal);
+  background: var(--cream-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.1rem;
+  min-height: 40px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--lime-dark);
+}
+
+.filter-chip.active {
+  background: var(--teal);
+  color: var(--cream);
+  border-color: var(--teal);
+}
+
+.filter-chip:focus-visible {
+  outline: 3px solid var(--lime-dark);
+  outline-offset: 2px;
+}
+
+.out-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+
+.out-bar {
+  flex: 0 0 64px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(26, 51, 64, 0.1);
+  overflow: hidden;
+}
+
+.out-bar span {
+  display: block;
+  height: 100%;
+  background: #C0392B;
+}
+
+.threshold-table tr[hidden] {
+  display: none;
+}
+
+.threshold-table .converted {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  opacity: 0.85;
+  margin-top: 0.15rem;
+}
+
+.threshold-table td.name {
+  min-width: 12rem;
+}
+
+@media (max-width: 760px) {
+  .out-bar {
+    flex-basis: 40px;
+  }
+  .threshold-table td.name {
+    min-width: 9rem;
+  }
+}

@@ -1,0 +1,11 @@
+import {compliance} from './model.js';
+const $=id=>document.getElementById(id),nf=new Intl.NumberFormat('it-IT');
+function outCell(c){if(!c)return 'Valutazione qualitativa';const wrap=document.createElement('div'),bar=document.createElement('span'),fill=document.createElement('span'),text=document.createElement('span');wrap.className='out-cell';bar.className='out-bar';fill.style.width=(c.assessed?100*c.out/c.assessed:0)+'%';bar.append(fill);text.textContent=`${nf.format(c.out)} su ${nf.format(c.assessed)}${c.na?` · ${nf.format(c.na)} non valutabili`:''}`;wrap.append(bar,text);return wrap;}
+function thresholdCell(t){const wrap=document.createElement('div');wrap.append(t.label+(t.star?' *':''));if(t.converted){const conv=document.createElement('span');conv.className='converted';conv.textContent='nei dati: '+t.converted;wrap.append(conv);}return wrap;}
+function cell(content,cls){const td=document.createElement('td');if(cls)td.className=cls;td.append(content);return td;}
+async function init(){try{const response=await fetch('data.json');if(!response.ok)throw Error('data');const {thresholds,records}=await response.json();
+$('thresholdRows').replaceChildren(...Object.entries(thresholds).sort((a,b)=>a[1].n-b[1].n).map(([param,t])=>{const rows=records.filter(r=>r.param===param),c=compliance(rows,t),tr=document.createElement('tr'),link=document.createElement('a');link.href='dashboard.html?'+new URLSearchParams({param});link.textContent=param;
+tr.append(cell(String(t.n),'num'),cell(link,'name'),cell(thresholdCell(t)),cell(nf.format(rows.length),'num'),cell(outCell(c),c?.out?'out':''));tr.dataset.out=c?.out?'1':'0';return tr;}));const rows=[...$('thresholdRows').rows];$('countAll').textContent=`(${rows.length})`;$('countOut').textContent=`(${rows.filter(r=>r.dataset.out==='1').length})`;
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});rows.forEach(r=>r.hidden=b.dataset.filter==='out'&&r.dataset.out!=='1');}));}
+catch(e){$('thresholdStatus').textContent='Impossibile caricare la tabella delle soglie. Ricarica la pagina per riprovare.';console.error(e);}}
+init();
